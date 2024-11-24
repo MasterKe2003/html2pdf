@@ -1,0 +1,20 @@
+services:
+  html2pdf:
+    container_name: html2pdf
+    build: .
+    ports:
+      - 4000:4000
+    networks:
+      - html2pdf-network
+
+  browserless-chrome:
+    container_name: browserless-chrome
+    image: browserless/chrome:latest
+    ports: 
+      - 4001:3000
+    networks:
+      - html2pdf-network
+
+networks:
+  html2pdf-network:
+    driver: bridge
